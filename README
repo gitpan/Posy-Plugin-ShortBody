@@ -6,7 +6,7 @@ Posy::Plugin::ShortBody - Posy plugin to give the start of an entry body
 
 ==== VERSION ====
 
-This describes version ``0.40'' of Posy::Plugin::ShortBody.
+This describes version ``0.50'' of Posy::Plugin::ShortBody.
 
 
 ==== DESCRIPTION ====
@@ -26,9 +26,10 @@ This expects configuration settings in the $self->{config} hash, which, in
 the default Posy setup, can be defined in the main "config" file in the data
 directory.
 
-``short_body_remove_header''
-If true, removes the first header it encounters in the body, and uses the
-first sentence after that. (1 is true, 0 is false) (default: true)
+``short_body_after_first_header''
+If true, removes everything up to the first header it encounters in the
+body, and uses the first sentence after that. (1 is true, 0 is false)
+(default: true)
 
 ``short_body_replace_body''
 If the short_body_replace_body option is true, then this *replaces*

@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Posy-Plugin-ShortBody
-version: 0.40
+version: 0.50
 author:
   - Kathryn Andersen
 abstract: Posy plugin to give the start of an entry body
@@ -12,5 +12,5 @@ build_requires:
 provides:
   Posy::Plugin::ShortBody:
     file: lib/Posy/Plugin/ShortBody.pm
-    version: 0.40
+    version: 0.50
 generated_by: Module::Build version 0.2607

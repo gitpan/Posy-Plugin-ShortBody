@@ -7,11 +7,11 @@ Posy::Plugin::ShortBody - Posy plugin to give the start of an entry body
 
 =head1 VERSION
 
-This describes version B<0.40> of Posy::Plugin::ShortBody.
+This describes version B<0.50> of Posy::Plugin::ShortBody.
 
 =cut
 
-our $VERSION = '0.40';
+our $VERSION = '0.50';
 
 =head1 SYNOPSIS
 
@@ -43,10 +43,10 @@ file in the data directory.
 
 =over
 
-=item B<short_body_remove_header>
+=item B<short_body_after_first_header>
 
-If true, removes the first header it encounters in the body, and
-uses the first sentence after that. (1 is true, 0 is false)
+If true, removes everything up to the first header it encounters in the body,
+and uses the first sentence after that. (1 is true, 0 is false)
 (default: true)
 
 =item B<short_body_replace_body>
@@ -76,8 +76,8 @@ sub init {
     $self->SUPER::init();
 
     # set defaults
-    $self->{config}->{short_body_remove_header} = 1
-	if (!defined $self->{config}->{short_body_remove_header});
+    $self->{config}->{short_body_after_first_header} = 1
+	if (!defined $self->{config}->{short_body_after_first_header});
     $self->{config}->{short_body_replace_body} = 0
 	if (!defined $self->{config}->{short_body_replace_body});
 } # init
@@ -102,9 +102,10 @@ sub short_body {
     my $entry_state = shift;
 
     my $body = $current_entry->{body};
-    if ($self->{config}->{short_body_remove_header})
+    if ($self->{config}->{short_body_after_first_header})
     {
-	$body =~ s#<h\d[^>]*>[^<>]+</h\d>##;
+	my ($pre_header, $header, $rest) = split(/<\/?h\d[^>]*>/, $body, 3);
+	$body = $rest;
     }
     # strip the HTML tags
     $body =~ s/<[^>]+>//gs;
