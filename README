@@ -1,0 +1,62 @@
+
+==== NAME ====
+
+Posy::Plugin::ShortBody - Posy plugin to give the start of an entry body
+
+
+==== VERSION ====
+
+This describes version ``0.40'' of Posy::Plugin::ShortBody.
+
+
+==== DESCRIPTION ====
+
+Purpose: Populates the flavour template variable $entry_short_body with the
+first sentence of the entry body (defined as everything before the first .,
+!, or ?) and strips out HTML tags along the way. Perfect for providing
+shortened, plaintext versions of stories for an RSS feed or summary index.
+
+This creates a 'short_body' entry action, which should be placed after
+'parse_entry' in the entry_action list, and before 'render_entry'.
+
+
+==   Configuration   ==
+
+This expects configuration settings in the $self->{config} hash, which, in
+the default Posy setup, can be defined in the main "config" file in the data
+directory.
+
+``short_body_remove_header''
+If true, removes the first header it encounters in the body, and uses the
+first sentence after that. (1 is true, 0 is false) (default: true)
+
+``short_body_replace_body''
+If the short_body_replace_body option is true, then this *replaces*
+$entry_body with the short body contents. This is useful when one wishes to
+speed processing when one knows that only the short body is going to be used
+(such as in chrono/category index pages). This needs to be done with care,
+naturally. (default: false)
+
+
+==== REQUIRES ====
+
+    Posy
+    Posy::Core
+
+    Test::More
+
+
+==== AUTHOR ====
+
+    Kathryn Andersen (RUBYKAT)
+    perlkat AT katspace dot com
+    http://www.katspace.com
+
+
+==== COPYRIGHT AND LICENCE ====
+
+Copyright (c) 2004-2005 by Kathryn Andersen
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
