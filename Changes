@@ -1,6 +1,13 @@
 Revision history for Posy-Plugin-ShortBody
 ==========================================
 
+0.51 Sun 06 February 2005
+-------------------------
+
+  * (6 Feb 2005) removed Makefile.PL
+
+  * (6 Feb 2005) added INSTALL docs
+
 0.50 Sun 16 January 2005
 ------------------------
 
